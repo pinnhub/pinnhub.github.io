@@ -142,7 +142,16 @@
         With the selected features, a <strong>Gaussian Mixture Model (GMM)</strong> is trained using the labeled data. The methodology here involves:
       </p>
       <ul>
-        <li>Empirically setting the hyperparameters (such as the number of components) based on the training data.</li>
+        <li>Empirically setting the hyperparameters (such as <p>
+  The hyperparameters are set as: 
+  <span>\(\text{covariance\_type} = \text{'diag'}\)</span>, 
+  <span>\(\text{tol} = 10^{-3}\)</span>, 
+  <span>\(\text{reg\_covar} = 0.04\)</span>, 
+  <span>\(\text{max\_iter} = 500\)</span>, 
+  <span>\(\text{n\_init} = 1\)</span>, and 
+  <span>\(\text{random\_state} = 45\)</span>.
+</p>
+) based on the training data.</li>
         <li>Keeping the GMM parameters fixed during the testing phase, allowing for unsupervised classification by computing the probability of new data belonging to either the crossover or first order group.</li>
       </ul>
     </section>
