@@ -236,6 +236,42 @@
   The entire pipeline thus allows for a complete inference process starting from raw test data, culminating in the prediction of both phase transitions and the corresponding transition temperatures, along with a probabilistic assessment of second-order transition zones on the phase diagram.
 </p>
 
+
+     <h2 style="text-align: center;">Few Experimental Results</h2>
+
+    <h3 style="text-align: center;">Comparative Study of Regression Methods</h3>
+
+<table border="1" cellspacing="0" cellpadding="10" style="width: 80%; margin: 20px auto; font-size: 18px; font-family: 'Times New Roman', Times, serif; border-collapse: collapse; background-color: #fff; text-align: left;">
+  <thead style="background-color: #e0e0e0;">
+    <tr>
+      <th>Method</th>
+      <th>Mean Squared Error (MSE)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Polynomial Regression</td>
+      <td>0.162551</td>
+    </tr>
+    <tr>
+      <td>Kernel Ridge Regression</td>
+      <td>0.000004</td>
+    </tr>
+    <tr>
+      <td>KNN Regression</td>
+      <td>0.000091</td>
+    </tr>
+    <tr>
+      <td>Hybrid Model</td>
+      <td>0.000033</td>
+    </tr>
+    <tr>
+      <td>Gaussian Process Regression</td>
+      <td>0.000140</td>
+    </tr>
+  </tbody>
+</table>
+
   </div>
   
   
