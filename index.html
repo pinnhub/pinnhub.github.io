@@ -104,13 +104,29 @@
     <section class="section">
       <h2 style="text-align: center;">Training Phase</h2>
        <p>
-      Due to data scarcity in QCD studies, we adopt a handcrafted feature extraction strategy, incorporating statistical descriptors like <strong>kurtosis</strong> and <strong>skewness</strong>, along with a novel feature, the <strong>Maximum Separation Measure (MSM)</strong>. MSM, defined as 
-      <span>\( \text{MSM}(\mathbf{x}) = \max_{i \in \{1, \ldots, n-1\}} \|x_{i+1} - x_i\|^2 \)</span>, 
-      captures abrupt transitions by quantifying the largest squared distance between consecutive data points.
+      Due to data scarcity in QCD studies, we adopt a handcrafted feature extraction strategy, incorporating statistical descriptors like <strong>kurtosis</strong> and <strong>skewness</strong>,
+         along with a novel feature, the <strong>Maximum Separation Measure (MSM)</strong>. 
     </p>
+      <p>
+    Given a signal vector \( \mathbf{x} = [x_1, x_2, \ldots, x_n] \), where each \( x_i \in \mathbb{R} \) represents sequential measurements, the MSM is mathematically defined as:
+  </p>
+
+  <p style="text-align: center; font-style: italic;">
+    \[
+      \text{MSM}(\mathbf{x}) = \max_{i \in \{1, \ldots, n-1\}} \|x_{i+1} - x_i\|^2
+    \]
+  </p>
+
+  <p>
+    This measure effectively quantifies the largest squared distance between consecutive data points, making it highly sensitive to sudden changes indicative of phase boundaries.
+  </p>
 
     <p>
-      These features are analyzed using <strong>SHapley Additive exPlanations (SHAP)</strong>, enabling model-agnostic interpretability. The top features, including MSM, kurtosis, and skewness, are selected for unsupervised clustering to distinguish between crossover and first-order transitions, facilitating accurate phase transition identification.
+      These features are analyzed using <strong>SHapley Additive exPlanations (SHAP)</strong>, enabling model-agnostic interpretability. 
+      The top features, including MSM, kurtosis, and skewness, are selected for unsupervised clustering to distinguish between crossover and first-order transitions,
+      facilitating accurate phase transition identification.  <p>
+    Figure~<span id="fig:shap_beeswarm_plot">1</span> illustrates the global importance of these top three features across all samples in the binary classification task, confirming their significant contribution toward distinguishing between crossover and first-order phase transitions. These analyses facilitated the selection of the top three features, namely <strong>Kurtosis</strong>, <strong>Skewness</strong>, and <strong>MSM</strong>, for subsequent unsupervised clustering analyses aimed at categorizing the phase transitions.
+  </p>
     </p>
 
     <p>
@@ -174,7 +190,7 @@
       <!-- Flex container for images -->
           <div class="figure-container">
             <img src="rf.png" alt="Random Forest Feature Importance">
-            <img src="shap.png" alt="SHAP Value Distribution">
+            <img src="shap.png" alt="SHAP Value Distribution" id="fig:shap_beeswarm_plot">
           </div>
       </ul>
     </section>
