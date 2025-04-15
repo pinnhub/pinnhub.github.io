@@ -268,6 +268,7 @@
 
      <h2 style="text-align: center;">Testing Phase</h2>
    <img class="box-diagram" src="testbd.JPG" alt="Bock Diagram of Proposed Testing Phase">
+    <section class="section">
     <p>
   In the <strong>testing phase</strong>, a new <em>unlabelled dataset</em> is introduced for inference. The first step involves extracting the <strong>top three features</strong>
       from the raw test data using the same feature selection logic employed during the training phase. These features are then passed through the pretrained (with hyperparameters)
@@ -296,6 +297,7 @@
   Furthermore, by leveraging the <em>soft probability assignments</em> from the GMM classifier, the method identifies and highlights
   regions on this boundary that are likely to correspond to <strong>second-order phase transitions</strong>.
 </p>
+      </section>
 
      <figure id="fig:soft_assignment" style="text-align: left; margin: 40px auto; max-width: 90%;">
   <img class="box-diagram" src="softassigngmm.JPG" alt="Transition" style="max-width: 100%; height: auto;">
