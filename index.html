@@ -217,24 +217,35 @@
      <h2 style="text-align: center;">Testing Phase</h2>
    <img class="box-diagram" src="testbd.JPG" alt="Bock Diagram of Proposed Testing Phase">
     <p>
-  In the <strong>testing phase</strong>, a new <em>unlabelled dataset</em> is introduced for inference. The first step involves extracting the <strong>top three features</strong> from the raw test data using the same feature selection logic employed during the training phase. These features are then passed through the pretrained <strong>Gaussian Mixture Model (GMM)</strong>, where the model—configured with fixed hyperparameters—classifies each input sample into one of two categories: <strong>crossover</strong> or <strong>first-order</strong> phase transition.
+  In the <strong>testing phase</strong>, a new <em>unlabelled dataset</em> is introduced for inference. The first step involves extracting the <strong>top three features</strong>
+      from the raw test data using the same feature selection logic employed during the training phase. These features are then passed through the pretrained (with hyperparameters)
+      <strong>Gaussian Mixture Model (GMM)</strong>, where the model—configured with fixed hyperparameters—classifies each input sample into one of
+      two categories: <strong>crossover</strong> or <strong>first-order</strong> phase transition.
 </p>
 
 <p>
-  The samples predicted as crossover are then fed into a specifically trained <strong>MLP-1</strong> model, while the first-order samples are routed through a separate <strong>MLP-2</strong> model. Each of these multi-layer perceptrons has been trained to detect whether the input data corresponds to a <strong>confined</strong> or <strong>deconfined</strong> phase, but tailored to the nature of the transition it specializes in—crossover or first-order.
+  The samples predicted as crossover are then fed into already trained <strong>MLP-1</strong> model, while the first-order samples are fed to
+  another trained <strong>MLP-2</strong> model. Each of these multi-layer perceptrons has been trained to detect whether the input data corresponds to a <strong>confined</strong> or
+  <strong>deconfined</strong> phase and hence predict in the testing phase.
 </p>
 
 <p>
-  Once classification into confined and deconfined states is complete for both crossover and first-order samples, these predicted phases are aggregated and passed into a shared <strong>MLP-Regressor</strong>. This regressor, trained using a parametric regression strategy during the training phase, is responsible for estimating the <strong>transition temperatures (TT)</strong> corresponding to the given physical conditions. The regression model outputs two transition temperatures: one for crossover and another for first-order transitions.
+  Once classification into confined and deconfined states is complete for both crossover and first-order samples, 
+  these predicted phases are aggregated and passed into a shared <strong>MLP-Regressor</strong>. 
+  This regressor, trained using a parametric regression strategy during the training phase, 
+  is responsible for estimating the <strong>transition temperatures (TT)</strong>.
+  The regression model outputs two transition temperatures: one for crossover and another for first-order transitions.
 </p>
 
 <p>
-  These predicted transition temperatures serve as input to a non-parametric model, specifically the <strong>Kernel Ridge Regression (KRR)</strong> framework. The KRR model maps the transition temperature data to a continuous surface, allowing it to predict the <strong>phase boundary</strong> across varying thermodynamic parameters. Furthermore, by leveraging the <em>soft probability assignments</em> from the GMM classifier, the method identifies and highlights regions on this boundary that are likely to correspond to <strong>second-order phase transitions</strong>, where the distinction between phases is less abrupt.
+  These predicted transition temperatures serve as input to a non-parametric model, 
+  specifically the <strong>Kernel Ridge Regression (KRR)</strong> framework. The KRR model maps the transition temperature data to 
+  a continuous surface, allowing it to predict the <strong>phase boundary</strong> across varying thermodynamic parameters. 
+  Furthermore, by leveraging the <em>soft probability assignments</em> from the GMM classifier, the method identifies and highlights
+  regions on this boundary that are likely to correspond to <strong>second-order phase transitions</strong>.
 </p>
 
-<p>
-  The entire pipeline thus allows for a complete inference process starting from raw test data, culminating in the prediction of both phase transitions and the corresponding transition temperatures, along with a probabilistic assessment of second-order transition zones on the phase diagram.
-</p>
+
 
 
      <h2 style="text-align: center;">Few Experimental Results</h2>
