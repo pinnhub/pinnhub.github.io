@@ -119,23 +119,19 @@
 
   <p>
     This measure effectively quantifies the largest squared distance between consecutive data points, making it highly sensitive to sudden changes indicative of phase boundaries.
-  </p>
-
-    <p>
+  
       These features are analyzed using <strong>SHapley Additive exPlanations (SHAP)</strong>, enabling model-agnostic interpretability. 
       The top features, including MSM, kurtosis, and skewness, are selected for unsupervised clustering to distinguish between crossover and first-order transitions,
-      facilitating accurate phase transition identification.  <p>
+      facilitating accurate phase transition identification. 
     Figure~<span id="fig:shap_beeswarm_plot">1</span> illustrates the global importance of these top three features across all samples in the binary classification task, confirming their significant contribution toward distinguishing between crossover and first-order phase transitions. These analyses facilitated the selection of the top three features, namely <strong>Kurtosis</strong>, <strong>Skewness</strong>, and <strong>MSM</strong>, for subsequent unsupervised clustering analyses aimed at categorizing the phase transitions.
-  </p>
+ 
     </p>
 
     <p>
       We employ a <strong>Gaussian Mixture Model (GMM)</strong> for clustering crossover and first-order phase transitions, leveraging its ability to handle small datasets and unlabeled data. The GMM models the probability distribution as 
       <span>\( p(\mathbf{x}) = \sum_{k=1}^{K} \pi_k \mathcal{N}(\mathbf{x} | \mu_k, \Sigma_k) \)</span>, 
       where \( \pi_k \), \( \mu_k \), and \( \Sigma_k \) represent the mixture weights, mean, and covariance of each component.
-    </p>
-
-    <p>
+   
       Using the <strong>Expectation-Maximization (EM)</strong> algorithm, we iteratively optimize these parameters, enabling effective soft clustering and probabilistic classification. The GMM is trained with empirically optimized hyperparameters, ensuring stable and reproducible clustering results across the dataset.
     </p>
 
@@ -154,7 +150,8 @@
     <p>
       where \(\alpha\) denotes the regression coefficients and \(k(\mathbf{x}, \mathbf{x}_i)\) is the kernel function. This approach enhances the precision and robustness of the phase boundary predictions.
     </p>
-      <h3>Step 1: Feature Extraction</h2>
+      <h2> Step by Step Training Process performed in the proposed Multi Tasking Model</h2>
+      <h3>Step 1: Feature Extraction</h3>
       <p>
         The process begins with a <strong>labeled</strong> dataset containing two types of phase transition data: <em>crossover</em> and <em>first order</em>. From this data, various statistical features are extracted, including:
       </p>
@@ -205,12 +202,12 @@
       <ul>
         <li>Empirically setting the hyperparameters (such as <p>
   The hyperparameters are set as: 
-  <span>\(\text{covariance\_type} = \text{'diag'}\)</span>, 
-  <span>\(\text{tol} = 10^{-3}\)</span>, 
-  <span>\(\text{reg\_covar} = 0.04\)</span>, 
-  <span>\(\text{max\_iter} = 500\)</span>, 
-  <span>\(\text{n\_init} = 1\)</span>, and 
-  <span>\(\text{random\_state} = 45\)</span>.
+  \( \text{covariance\_type} = \text{'diag'} \), 
+  \( \text{tol} = 10^{-3} \), 
+  \( \text{reg\_covar} = 0.04 \), 
+  \( \text{max\_iter} = 500 \), 
+  \( \text{n\_init} = 1 \), and 
+  \( \text{random\_state} = 45 \).
 </p>
 ) based on the training data.</li>
         <li>Keeping the GMM parameters fixed during the testing phase, allowing for unsupervised classification by computing the probability of new data belonging to either the crossover or first order group.</li>
