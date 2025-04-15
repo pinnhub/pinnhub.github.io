@@ -182,12 +182,9 @@
 
     <section class="section">
       <h3>Step 5: MTL for Transition Temperature Regression</h2>
-      <p>
-        A key component of the approach is a multi-task learning (MTL) framework:
-      </p>
-      <ul>
+          <ul>
         <li>An additional <strong>MLP regressor</strong> is trained to predict the transition temperatures for both crossover and first-order data.</li>
-        <li>This parametric regression model learns from all confined and deconfined data across both regimes, capturing comprehensive relationships in the dataset.</li>
+        <li>This parametric regression model learns from all confined and deconfined data across both data.</li>
       </ul>
     </section>
 
@@ -205,7 +202,9 @@
         <li>A <strong>hybrid regression model</strong> combining KRR and kNN.</li>
       </ul>
       <p>
-        Among these techniques, <strong>KRR</strong> is found to be most effective on the validation dataset. The <em>soft probability assignments</em> from the GMM further help in defining a probable zone of phase transition, indicating the confidence in the phase boundary prediction.
+        Among these techniques, <strong>KRR</strong> is found to be most effective on the validation dataset. The <em>soft probability assignments</em> from the GMM further help in defining a probable zone of phase transition
+        over the predicted boundary. 
+  
       </p>
     </section>
 
