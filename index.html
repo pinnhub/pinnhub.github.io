@@ -84,6 +84,10 @@
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 <body>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+
   <header>
     <h1>Hybrid Regression and Explainable AI for Phase Transition Analysis of two-flavour Quark Matter</h1>
     <h2>Pradipta K. Banerjee, Tamal K. Mukherjee</h2>
@@ -99,6 +103,41 @@
     <!-- Methodology Sections -->
     <section class="section">
       <h2 style="text-align: center;">Training Phase</h2>
+       <p>
+      Due to data scarcity in QCD studies, we adopt a handcrafted feature extraction strategy, incorporating statistical descriptors like <strong>kurtosis</strong> and <strong>skewness</strong>, along with a novel feature, the <strong>Maximum Separation Measure (MSM)</strong>. MSM, defined as 
+      <span>\( \text{MSM}(\mathbf{x}) = \max_{i \in \{1, \ldots, n-1\}} \|x_{i+1} - x_i\|^2 \)</span>, 
+      captures abrupt transitions by quantifying the largest squared distance between consecutive data points.
+    </p>
+
+    <p>
+      These features are analyzed using <strong>SHapley Additive exPlanations (SHAP)</strong>, enabling model-agnostic interpretability. The top features, including MSM, kurtosis, and skewness, are selected for unsupervised clustering to distinguish between crossover and first-order transitions, facilitating accurate phase transition identification.
+    </p>
+
+    <p>
+      We employ a <strong>Gaussian Mixture Model (GMM)</strong> for clustering crossover and first-order phase transitions, leveraging its ability to handle small datasets and unlabeled data. The GMM models the probability distribution as 
+      <span>\( p(\mathbf{x}) = \sum_{k=1}^{K} \pi_k \mathcal{N}(\mathbf{x} | \mu_k, \Sigma_k) \)</span>, 
+      where \( \pi_k \), \( \mu_k \), and \( \Sigma_k \) represent the mixture weights, mean, and covariance of each component.
+    </p>
+
+    <p>
+      Using the <strong>Expectation-Maximization (EM)</strong> algorithm, we iteratively optimize these parameters, enabling effective soft clustering and probabilistic classification. The GMM is trained with empirically optimized hyperparameters, ensuring stable and reproducible clustering results across the dataset.
+    </p>
+
+    <p>
+      To delineate the phase boundary, this study employs a <strong>hybrid regression</strong> approach combining parametric and semi-parametric techniques. The <strong>Multi-Task Learning (MTL)</strong> model uses a Multi-Layer Perceptron (MLP) to classify phases and predict transition temperatures for each coupling constant.
+    </p>
+
+    <p>
+      After classification, a <strong>parametric regression</strong> is performed using an MLP regressor to predict the transition temperatures from \(\sigma\)-\(T\) data. Subsequently, <strong>Kernel Ridge Regression (KRR)</strong><sup>[1]</sup> is applied to accurately establish the phase boundary, where the prediction is given by the following equation:
+    </p>
+
+    <p style="text-align: center; font-style: italic;">
+      <span>\( f(\mathbf{x}) = \sum_{i=1}^{n} \alpha_i k(\mathbf{x}, \mathbf{x}_i) \)</span>
+    </p>
+
+    <p>
+      where \(\alpha\) denotes the regression coefficients and \(k(\mathbf{x}, \mathbf{x}_i)\) is the kernel function. This approach enhances the precision and robustness of the phase boundary predictions.
+    </p>
       <h3>Step 1: Feature Extraction</h2>
       <p>
         The process begins with a <strong>labeled</strong> dataset containing two types of phase transition data: <em>crossover</em> and <em>first order</em>. From this data, various statistical features are extracted, including:
