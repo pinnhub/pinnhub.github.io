@@ -6,7 +6,7 @@
   <title>Hybrid Regression and Explainable AI for Phase Transition Analysis of two-flavour Quark Matter</title>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
+   <style>
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -14,7 +14,6 @@
       background-color: #f4f4f4;
       color: #333;
     }
-    /* Header style remains centered */
     header {
       text-align: center;
       padding: 20px;
@@ -33,7 +32,6 @@
       margin: 0;
       padding-bottom: 10px;
     }
-    /* Content container for methodology sections */
     .content {
       max-width: 1200px;
       margin: 30px auto;
@@ -60,6 +58,17 @@
     }
     ul {
       padding-left: 20px;
+    }
+    .figure-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 20px 0;
+    }
+    .figure-container img {
+      width: 45%;
+      height: auto;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
     }
     img.box-diagram {
       display: block;
@@ -114,6 +123,11 @@
       <ul>
         <li><strong>SHAP (SHapley Additive exPlanations)</strong> computes contribution scores, offering both local and global insights into which features are influential in making predictions.</li>
         <li>Figures (1) and (2) in the study illustrate the score distribution of the important features as obtained by the explainable AI approach.</li>
+      <!-- Flex container for images -->
+          <div class="figure-container">
+            <img src="rf.png" alt="Random Forest Feature Importance">
+            <img src="shap.png" alt="SHAP Value Distribution">
+          </div>
       </ul>
     </section>
 
