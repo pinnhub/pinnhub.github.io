@@ -123,7 +123,9 @@
       </p>
       <ul>
         <li><strong>SHAP (SHapley Additive exPlanations)</strong> computes contribution scores, offering both local and global insights into which features are influential in making predictions.</li>
-        <li>Figures (1) and (2) in the study illustrate the score distribution of the important features as obtained by the explainable AI approach.</li>
+        <li>Figures (1) and (2) in the study illustrate the score distribution of the important features as obtained by the explainable AI approach. <p>
+        After assessing feature importance via Random Forest and SHAP, the <strong>top-3 most important features</strong> are selected for further analyses. This Reduces the dimensionality of the problem.
+      </p></li>
       <!-- Flex container for images -->
           <div class="figure-container">
             <img src="rf.png" alt="Random Forest Feature Importance">
@@ -132,19 +134,10 @@
       </ul>
     </section>
 
-    <section class="section">
-      <h3>Step 3: Selection of Top-3 Features</h2>
-      <p>
-        After assessing feature importance via Random Forest and SHAP, the <strong>top-3 most important features</strong> are selected for further analyses. This:
-      </p>
-      <ul>
-        <li>Reduces the dimensionality of the problem.</li>
-        <li>Focuses on the key physics-related signals that differentiate the transition types.</li>
-      </ul>
-    </section>
+    
 
     <section class="section">
-      <h3>Step 4: Unsupervised Classification with GMM</h2>
+      <h3>Step 3: Unsupervised Classification with GMM</h2>
       <p>
         With the selected features, a <strong>Gaussian Mixture Model (GMM)</strong> is trained using the labeled data. The methodology here involves:
       </p>
@@ -155,7 +148,7 @@
     </section>
 
     <section class="section">
-      <h3>Step 5: Dual MLP for Confined vs. Deconfined Classification</h2>
+      <h3>Step 4: Dual MLP for Confined vs. Deconfined Classification</h2>
       <p>
         After classifying the data into crossover and first order types using the GMM, the methodology further distinguishes between the confined and deconfined phases:
       </p>
@@ -171,7 +164,7 @@
     </section>
 
     <section class="section">
-      <h3>Step 6: MTL for Transition Temperature Regression</h2>
+      <h3>Step 5: MTL for Transition Temperature Regression</h2>
       <p>
         A key component of the approach is a multi-task learning (MTL) framework:
       </p>
@@ -182,7 +175,7 @@
     </section>
 
     <section class="section">
-      <h3>Step 7: Non-Parametric Regression for Phase Boundary Prediction</h2>
+      <h3>Step 6: Non-Parametric Regression for Phase Boundary Prediction</h2>
       <p>
         Finally, with the transition temperatures predicted, the phase boundary is determined using various non-parametric regression techniques:
       </p>
